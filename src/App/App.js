@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Cryptocurrency Rules!</h2>
+          <h2>Your Cryptocurrency Haven</h2>
         </div>
         <Tickers />
       </div>
