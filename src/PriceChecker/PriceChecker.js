@@ -7,7 +7,6 @@ class PriceChecker extends Component {
   state = {
     price_usd: '',
     date: '',
-    datePlusOne: ''
   };
 
   fetchData() {
