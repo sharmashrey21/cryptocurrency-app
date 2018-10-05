@@ -12,4 +12,3 @@ Use this command to start the application:
 ```bash
 npm start
 ```
-The link to the tutorial for this project can be found [here](https://sabe.io/tutorials/getting-started-with-react#what-will-we-be-building)
