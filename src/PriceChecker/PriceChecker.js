@@ -11,37 +11,28 @@ class PriceChecker extends Component {
   };
 
   fetchData() {
+    var string = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=' + this.state.date + '&end=' + this.state.date;
+    console.log(string);
     axios
-      .get('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2013-09-05')
+      .get(string)
       .then(response => {
-        console.log('Response: ', response);
         var result = response.data.bpi;
-        console.log('Result: ', result);
-        console.log('state: ', this.state);
+        this.setState({price_usd: result[Object.keys(result)[0]]})
+        console.log(this.state.price_usd);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      this.setState({price_usd: 'There is no data available for this date!'});
   }
-
-  // convertDate(value) {
-  //   console.log('value: ', value);
-  //   const d = new Date(value);
-  //   var date = d.getTime();
-  //   this.setState({ value: date });
-  //   console.log('state: ', this.state);
-  //   console.log('date: ', date);
-  //   return date;
-  // }
 
   handleChange = async event => {
     var dateSelected = event.target.value;
-    console.log('dateSelected: ', dateSelected);
-    this.setState({ date: dateSelected });
-    var numberDate = dateSelected.length - 2;
-    var dateTomorrow = Number.parseInt(dateSelected.substring(numberDate, dateSelected.length));
-    dateTomorrow++;
-    console.log('dateTomorrow: ', dateTomorrow);
-    // this.setState({ datePlusOne: tomorrowString });
-    await this.fetchData();
+    if(dateSelected.length > 0) {
+      await this.setState({ date: dateSelected });
+      this.fetchData();
+    }
+    else {
+      this.setState({price_usd: ''});
+    }
   };
 
   render() {
