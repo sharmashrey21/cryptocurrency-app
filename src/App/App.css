@@ -2,8 +2,9 @@
   text-align: center;
 }
 .App-header {
-  background-color: #222;
-  color: white;
+  background-color: white;
+  color: #FFB6C1;
+  border-bottom: solid 2px black;  
   font-size: 1.25rem;
   margin: 0;
   padding: 1rem;
